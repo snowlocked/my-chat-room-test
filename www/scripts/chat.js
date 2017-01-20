@@ -27,6 +27,10 @@ MyChat.prototype = {
         	}
         })
     },
+    /**
+     * [joinChat start to join the chat room and send messages to others]
+     * @return {[type]} [description]
+     */
     joinChat:function(){
     	var that = this;
     	this.socket = io.connect();

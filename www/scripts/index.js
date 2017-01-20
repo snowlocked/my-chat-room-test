@@ -16,8 +16,8 @@
 	// login operate
 	loginNode.addEventListener('click',function(){
 		var data = common.getFormData('login-form');
-		console.log(data);
-		if(data.name==''){
+		// console.log(data);
+		if(data.name.trim()==''){
 			alert('please input your name');
 			return;
 		}
@@ -25,6 +25,7 @@
 			alert('the verification code is wrong,please type it again!');
 			return;
 		}
+		data.name=data.name.trim();
 		$.ajax({
 			url:'/loginAction',
 			type:'POST',

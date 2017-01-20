@@ -30,6 +30,7 @@
 			alert('the verification code is wrong,please type it again!');
 			return;
 		}
+		// register new user
 		$.ajax({
 			url:'/loginAction/register',
 			type:'POST',
