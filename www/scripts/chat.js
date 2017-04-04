@@ -56,7 +56,8 @@ MyChat.prototype = {
         this.socket.on('system', function(nickName, userCount, type) {
             var msg = nickName + (type == 'login' ? ' joined' : ' left');
             that._displayNewMsg('system ', msg, 'red');
-            common.getIdNode('status').textContent = userCount + (userCount > 1 ? ' users' : ' user') + ' online';
+            // common.getIdNode('status').textContent = userCount +
+            // (userCount > 1 ? ' users' : ' user') + ' online';
         });
         // show new message
         this.socket.on('newMsg', function(user, msg, color) {

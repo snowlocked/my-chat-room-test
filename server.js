@@ -9,7 +9,6 @@ var express = require('express'),
 var login = require('./routes/login');
 // var backManagement = require('./routes/backManagement');
 //get the post require param
-var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 //specify the html we will use
@@ -25,6 +24,7 @@ server.listen(process.env.PORT || 10001);//publish to heroku
 io.sockets.on('connection', function(socket) {
     //new user login
     socket.on('login', function(nickname) {
+        console.log(nickname);
         if (users.indexOf(nickname) > -1) {
             socket.emit('nickExisted');
         } else {
@@ -45,10 +45,14 @@ io.sockets.on('connection', function(socket) {
     });
     //new message get
     socket.on('postMsg', function(msg, color) {
+        // console.log(socket);
         socket.broadcast.emit('newMsg', socket.nickname, msg, color);
     });
     //new image get
     socket.on('img', function(imgData, color) {
+        // console.log('imgData:'+imgData);
+        // console.log('color:'+color);
+        // console.log('nickname'+socket.nickname);
         socket.broadcast.emit('newImg', socket.nickname, imgData, color);
     });
 });

@@ -5,7 +5,7 @@
 var mysql = require('mysql');
 // 使用连接池，提升性能
 var pool = mysql.createPool({
-	host:'localhost',
+	host:'127.0.0.1',
 	port:3306,
 	user:'root',
 	password:'root',
